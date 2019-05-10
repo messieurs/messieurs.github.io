@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>FtHoF Planner v2 user guide</title>
+</head>
+<body>
+<p>More documentation coming soon. For now if you're not familiar with how the original FtHoF planner works, you can <a href="http://fthof-planner.s3-website.us-east-2.amazonaws.com/">check it out</a>.</p>
+<p>If you have questions/feedback, you can <a href="mailto:chilling@gmail.com">email me</a>, or preferably contact me on Discord in the cookie clicker channel. I'm @skeezy.</p>
+
+<p>New features/options:</p>
+<ul>
+<li>
+  Combo search: Once you import a save file, the planner will display both the earliest and shortest versions of combos. Combos are combinations of Building Specials (BS) (and optionally Elder Frenzies (EF)) that are close together.
+  <ul>
+    <li>Min combo is the smallest combo to search for; Max is the largest.</li>
+    <li>Spread is how much leeway to include in the combo search. For example, if you want a 3x combo and are ok with a sequence of [BS, non-BS, BS, BS], that would be a combo size of 3 with a spread of 1, for a total length of 4.</li>
+    <li>Include Elder Frenzies is asking whether to count EF spawns from FtHoF in your combos. For most people these are just as good, if not better than Building Specials, so they're included by default. But in some cases you may not want EF via FtHoF, so I have an option to exclude it.</li>
+    <li>For Skip Abominations and Skip Spontaneous Edifices, see below for more explanation, but these options are just asking whether to factor in skippable rows when searching for combos. Can't imagine why you'd want this off, but I have the option there at least for educational purposes.</li>
+  </ul>
+</li>
+
+<li>
+  Gambler's fever dream: Added a column for this, as it's critical to getting combos:
+  <ul>
+    <li>More chances for Building Special or Elder Frenzy via Gambler's -> FtHoF. Plus these casts end up costing significantly less mana, which can help with more spread-out combos. Hover over the cookie when it's FtHoF to see what the cookie might contain</li>
+    <li>Allows for more combos by skipping over certain rows when desired. (Abominations and successful Spontaneous Edifice casts from Gambler's can both increment your spell counter for free, i.e. without costing any mana.)</li>
+    <li>For the same skipping reason as above, this can help in incrementing your spell counter quickly to get to your desired combo.</li>
+  </ul>
+</li>
+<li>Lookahead length: This is how many grimoire casts (rows) are loaded when you import (original had it hard-coded to 10).</li>
+<li>Spell counter column (the one on the left) now includes indices for both your spells casts this ascension, and total spells cast</li>
+<li>Building Specials and Elder Frenzies are highlighted yellow</li>
+<li>Rows skippable via Gambler's have their Gambler's spell highlighted green.</li>
+</ul>
+</body>
+</html>
