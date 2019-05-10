@@ -34,7 +34,15 @@
 		</md-input-container>
 		<md-button class="md-raised md-primary" ng-click="load_game()">Import Save</md-button>
 		</div>
-    <h3>Best distance: {{bestDistance}}; Index: {{bestStart}}</h3>
+    <ul>
+      <li ng-repeat="combo in combos">
+        <b>{{$index + min_combo_length}}x Combo</b> 
+        <ul>
+          <li><i>Earliest:</i> Length {{combo.first.length}}, starting at {{combo.first.idx+1}}</li>
+          <li><i>Shortest:</i> Length {{combo.shortest.length}}, starting at {{combo.shortest.idx+1}}</li>
+        </ul> 
+      </li>
+    </ul>
 		<p>Force the Hand of Fate is not completely random, it is based on your game's seed (which changes after each ascension) and on the number of spells cast this game. This means that if you know the seed then you can predict the results for casting Force the Hand of Fate.</p>
 		<p>There are two main things that can affect the result of FtHoF, the current season and the golden cookie sound selector. If the season is Valentines or Easter the random seed will be increased once, if the golden cookie sound selector is on then the seed will also be increased. This means there are 3 possible results for each cast of FtHoF depending on the selected season or whether the golden cookie chime is on or both. Continuing to switch between seasons or turn the chime on and off will not affecting the results, they only affect the result at the time the spell is cast.</p>
 		<p>Dragonflight can also affect the results of casting FtHoF. If the buff is active (not just possible) when FtHoF is cast then Click Frenzy is not added to the pool of possible results. This can change the result even if the original result was not a Click Frenzy.</p>
@@ -48,8 +56,11 @@
     
     <md-divider ></md-divider>
 	
-    <label>Combo Size</label>
-    <input type="number" ng-model="buffs_in_sequence" min=1 max=16> 
+    <label>Min Combo</label>
+    <input type="number" ng-model="min_combo_length" min=1 max=16> 
+    
+    <label>Max Combo</label>
+    <input type="number" ng-model="max_combo_length" min=1 max=16>     
 
     <label>Max Spread</label>
     <input type="number" ng-model="max_spread" min=0 max=99> 
