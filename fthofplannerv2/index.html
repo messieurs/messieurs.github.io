@@ -37,9 +37,11 @@
     <ul>
       <li ng-repeat="combo in combos">
         <b>{{$index + min_combo_length}}x Combo</b> 
-        <ul>
-          <li><i>Earliest:</i> Length {{combo.first.length}}, starting at {{combo.first.idx+1}}</li>
-          <li><i>Shortest:</i> Length {{combo.shortest.length}}, starting at {{combo.shortest.idx+1}}</li>
+        <ul ng-if="combo.shortest.idx == -1"><li>No combo of this length</li></ul>
+        <ul ng-if="combo.shortest.idx != -1">
+          <li ng-if="combo.first.idx != -1"><a href="#{{combo.first.idx}}">Earliest:</a> Length {{combo.first.length}}; spread {{combo.first.length - ($index + min_combo_length)}}; starting at {{combo.first.idx+1}}</li>
+          <li ng-if="combo.first.idx == -1">No combo of this length with spread <= {{max_spread}}</li>
+          <li><a href="#{{combo.shortest.idx}}">Shortest:</a> Length {{combo.shortest.length}}; spread {{combo.shortest.length - ($index + min_combo_length)}}; starting at {{combo.shortest.idx+1}}</li>
         </ul> 
       </li>
     </ul>
@@ -103,6 +105,7 @@
 						<md-subheader class="md-no-sticky">Relative to now (this ascension | all time)</md-subheader>
 						<md-list-item class="md-2-line" ng-repeat="cookie_list in cookies" ng-click="null">
 							<div class="md-list-item-text" layout="column">
+                <a name="{{$index}}"></a>
 								<h3>{{"+" + ($index+1) + " (" + (spellsCastThisAscension+$index+1) + " | " + (spellsCastTotal+$index+1) + ")"}}</h3>
 							</div>
 						</md-list-item>
