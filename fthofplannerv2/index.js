@@ -6,6 +6,7 @@ app.controller('myCtrl', function($scope) {
     $scope.seed = ""
 	$scope.ascensionMode = 0
 	$scope.spellsCastTotal = 0
+  $scope.spellsCastThisAscension = 0
 	$scope.dragonflight = false
 	$scope.on_screen_cookies = 0
   $scope.buffs_in_sequence = 3
@@ -21,24 +22,28 @@ app.controller('myCtrl', function($scope) {
 	
 	$scope.load_game = function(str) {
 		if(!str) {
-			str = $scope.save_string
+			str = $scope.save_string;
 		}
 		str = str.split('!END!')[0];
 		str = Base64.decode(str);
 		str = str.split('|');
 		spl = str[2].split(';');
 		$scope.seed = spl[4];
-		console.log($scope.seed)
+		console.log($scope.seed);
 		
-		spl=str[4].split(';')
+		spl=str[4].split(';');
 		$scope.ascensionMode=parseInt(spl[29]);
-		console.log(spl)
-		spl=str[5].split(';')
-		console.log(spl[7])
-		$scope.spellsCastTotal = parseInt(spl[7].split(' ')[2])
-		console.log($scope.spellsCastTotal)
+		console.log(spl);
+		spl=str[5].split(';');
+		console.log(spl[7]);
+		
+    $scope.spellsCastTotal = parseInt(spl[7].split(' ')[2]);
+    console.log('Total spells cast: ' + $scope.spellsCastTotal);
+    
+    $scope.spellsCastThisAscension = parseInt(spl[7].split(' ')[1]);
+    console.log('Spells cast this ascension: ' + $scope.spellsCastThisAscension);
 
-		$scope.update_cookies()
+		$scope.update_cookies();
 	}
 	
 	$scope.update_cookies = function() {

@@ -89,10 +89,10 @@
 				</md-toolbar>
 				<md-content>
 					<md-list flex>
-						<md-subheader class="md-no-sticky">From current spells cast.</md-subheader>
+						<md-subheader class="md-no-sticky">Relative to now (this ascension | all time)</md-subheader>
 						<md-list-item class="md-2-line" ng-repeat="cookie_list in cookies" ng-click="null">
 							<div class="md-list-item-text" layout="column">
-								<h3>{{$index+1}}</h3>
+								<h3>{{"+" + ($index+1) + " (" + (spellsCastThisAscension+$index+1) + " | " + (spellsCastTotal+$index+1) + ")"}}</h3>
 							</div>
 						</md-list-item>
 				</md-content>
