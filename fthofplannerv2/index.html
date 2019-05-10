@@ -133,7 +133,7 @@
 						<md-subheader class="md-no-sticky">Season is not Easter or Valentines and Chime is off.</md-subheader>
 						<md-list-item class="md-2-line" ng-repeat="cookie_list in cookies" ng-click="null">
 							<img ng-src={{cookie_list[0].wrath?"img/WrathCookie.png":"img/GoldCookie.png"}} class="md-avatar" alt="Golden Cookie" />
-							<div class="md-list-item-text{{cookie_list[0].noteworthy ? ' highlight' : ''}}" layout="column">
+							<div class="md-list-item-text{{cookie_list[0].noteworthy ? ' highlightCombo' : ''}}" layout="column">
 								<h3>{{cookie_list[0].type}}</h3>
 							</div>
 						</md-list-item>
@@ -151,7 +151,7 @@
 						<md-subheader class="md-no-sticky">Season is Easter or Valentines OR Chime is on.</md-subheader>
 						<md-list-item class="md-2-line" ng-repeat="cookie_list in cookies" ng-click="null">
 							<img ng-src={{cookie_list[1].wrath?"img/WrathCookie.png":"img/GoldCookie.png"}} class="md-avatar" alt="Golden Cookie" />
-							<div class="md-list-item-text{{cookie_list[1].noteworthy ? ' highlight' : ''}}" layout="column">
+							<div class="md-list-item-text{{cookie_list[1].noteworthy ? ' highlightCombo' : ''}}" layout="column">
 								<h3>{{cookie_list[1].type}}</h3>
 							</div>
 						</md-list-item>
@@ -169,7 +169,7 @@
 						<md-subheader class="md-no-sticky">Season is Easter or Valentines AND Chime is on.</md-subheader>
 						<md-list-item class="md-2-line" ng-repeat="cookie_list in cookies" ng-click="null">
 							<img ng-src={{cookie_list[2].wrath?"img/WrathCookie.png":"img/GoldCookie.png"}} class="md-avatar" alt="Golden Cookie" />
-							<div class="md-list-item-text{{cookie_list[2].noteworthy ? ' highlight' : ''}}" layout="column">
+							<div class="md-list-item-text{{cookie_list[2].noteworthy ? ' highlightCombo' : ''}}" layout="column">
 								<h3>{{cookie_list[2].type}}</h3>
 							</div>
 						</md-list-item>
@@ -187,7 +187,7 @@
 						<md-subheader class="md-no-sticky">Gambler's Fever Dream</md-subheader>
 						<md-list-item class="md-2-line" ng-repeat="cookie_list in cookies" >
 							<img ng-src={{cookie_list[3].backfire?"img/WrathCookie.png":"img/GoldCookie.png"}} class="md-avatar" alt="Golden Cookie" />
-							<div class="md-list-item-text{{(cookie_list[3].hasBs || cookie_list[3].hasEf) ? ' highlight' : ''}}" layout="column">
+							<div class="md-list-item-text{{(cookie_list[3].hasBs || cookie_list[3].hasEf) ? ' highlightCombo' : cookie_list[3].type == 'Resurrect Abomination' || (cookie_list[3].type == 'Spontaneous Edifice' && !cookie_list[3].backfire) ? ' highlightSkip' : ''}}" layout="column">
 								<h3 title="{{cookie_list[3].innerCookie1.type + '; ' + cookie_list[3].innerCookie2.type + '; ' + cookie_list[3].innerCookie3.type}}">{{cookie_list[3] ? cookie_list[3].type : "Blank"}}</h3>
 							</div>
 						</md-list-item>
