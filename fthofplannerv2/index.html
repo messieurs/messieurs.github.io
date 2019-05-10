@@ -14,11 +14,12 @@
 <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+<title>FtHoF Planner v2</title>
 <head>
 	<md-toolbar>
 	    <div class="md-toolbar-tools">
 			<h1>
-				<span>Cookie Clicker FtHoF Planner</span>
+				<span>Cookie Clicker FtHoF Planner v2</span>
 			</h1>
 		</div>
 	</md-toolbar>
@@ -41,14 +42,43 @@
 		</p>Since the result of FtHoF is based on the number of spells cast, if the next FtHoF cookie is not the one you want, you can cast a different spell to skip this one. This can be useful if you are searching for a particular cookie or need to skip a wrath cookie.</p>
 		
 		<md-divider ></md-divider>
+    
+    <label>How far to look ahead</label>
+    <input type="number" ng-model="lookahead" min=10 max=1000> 
+    
+    <md-divider ></md-divider>
 	
-        <md-checkbox ng-model="dragonflight" aria-label="Dragon Flight Active" ng-change="update_cookies()">
-			Dragonflight Active
-        </md-checkbox>
-		<md-input-container class="md-block">
-			<label>Golden Cookes on screen</label>
-			<input type="number" ng-model="on_screen_cookies" ng-change="update_cookies()" min=0> 
-		</md-input-container>
+    <label>Number of Buffs in Sequence</label>
+    <input type="number" ng-model="buffs_in_sequence" min=1 max=16> 
+
+    <label>Max Spread</label>
+    <input type="number" ng-model="max_spread" min=0 max=99> 
+
+    <md-checkbox ng-checked=true ng-model="include_ef_in_sequence" aria-label="Include Elder Frenzy">
+      Include Elder Frenzies
+    </md-checkbox>
+    
+    <md-checkbox ng-checked=true ng-model="skip_abominations" aria-label="Allow Abomination Skips">
+      Skip Abominations
+    </md-checkbox>    
+    
+    <md-checkbox ng-checked=true ng-model="skip_edifices" aria-label="Allow Spontaneous Edifice Skips">
+      Skip Spontaneous Edifices
+    </md-checkbox>    
+
+    
+ 		<md-divider ></md-divider>
+
+    <label>Golden Cookes on screen</label>
+    <input type="number" ng-model="on_screen_cookies" min=0 max=10>     
+    
+    <md-checkbox ng-model="dragonflight" aria-label="Dragon Flight Active">
+      Dragonflight Active
+    </md-checkbox>    
+    
+
+ 		<md-divider ></md-divider>
+    
 		
 		<div layout-gt-sm="row" layout="column">
 			<div flex-gt-sm="15" flex>
@@ -132,7 +162,7 @@
 					<md-list flex>
 						<md-subheader class="md-no-sticky">Gambler's Fever Dream</md-subheader>
 						<md-list-item class="md-2-line" ng-repeat="cookie_list in cookies" >
-							<img ng-src={{cookie_list[3].wrath?"img/WrathCookie.png":"img/GoldCookie.png"}} class="md-avatar" alt="Golden Cookie" />
+							<img ng-src={{cookie_list[3].backfire?"img/WrathCookie.png":"img/GoldCookie.png"}} class="md-avatar" alt="Golden Cookie" />
 							<div class="md-list-item-text{{(cookie_list[3].hasBs || cookie_list[3].hasEf) ? ' highlight' : ''}}" layout="column">
 								<h3 title="{{cookie_list[3].innerCookie1.type + '; ' + cookie_list[3].innerCookie2.type + '; ' + cookie_list[3].innerCookie3.type}}">{{cookie_list[3] ? cookie_list[3].type : "Blank"}}</h3>
 							</div>

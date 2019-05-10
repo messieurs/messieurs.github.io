@@ -8,9 +8,11 @@ app.controller('myCtrl', function($scope) {
 	$scope.spellsCastTotal = 0
 	$scope.dragonflight = false
 	$scope.on_screen_cookies = 0
+  $scope.buffs_in_sequence = 3
+  $scope.max_spread = 0
 	$scope.save_string = "Mi4wMTl8fDE1NTcwMjQwMjkzMjQ7MTUyNTU2Mzg4NjQ5ODsxNTU3MDI2MDY3NTI2O1ByZXR0eSBCaXNjdWl0O2ljb2NkfDExMTExMTExMTAwMTAwMTAwMDAxMHwzMTcyOTc5ODU2ODk2MS4wNzsyNDk5OTU5MzQxMDEyOTYuNjszNTE0OzgzMzc7Nzc3NzExMzQ3NDEzMDIuMjc7NzI2ODU7MDszOzEuNjMwODE0MDg0NjAwMTQxOGUrMTAxOzA7MDswOzA7MDsxMDg7MTE7MDswOzExOzE7MjU4MzAzNjsxO2NocmlzdG1hczswOzA7NS40NjM0NjQ4MjMyNzM2MjRlKzI5OzUuNDYzNDY0ODIzMjczNjI0ZSsyOTsxMDM0OTI0NTIwNTExOzA7MDsyMjY7MjI4OzIyMzsyMjI7MjI1OzU7MTswOzE7MTAwOzA7MDsxODk7NDY3OzE1NTcwMjM1NTE1NDY7MTU1Njk5MjAzMDQ0ODswOzEyOSwyMjc7NDA7fDE2MCwxNjAsMTg0MDI4NTc4NDIyMCwxLCwwOzE1MCwxNTAsNzE2NTA1ODQ0NTcwLDEsLDA7MTAwLDIxMCwyODczMDgyMzkzMyw5LDE1NTcwMjYyODY2MDQ6MDoxNTU3MDI0MDI5MzMxOjA6MDozNzM5OjE6MToxNTU3MDI0MDI5MzMxOiAxMTExMTAxMDExMTExMTAwMDAwMDEwMTEwMDAwMDAwMTAwIDA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOjA6MDowOiwwOzEwMCwyMDAsODg2MTIxODQ2MDMsMSwsMDsxMDAsMTgwLDE5NjIxNTUxOTQzMSwxLCwwOzgwLDE1MCw3MzUxMjI3MzcxNzcsMSwsMDs1MCw1MCwxNzUzMjgyNjI2MDA4LDEsMi8tMS8tMSAyIDE1NTcwMjU5NTgwMzQgMSwwOzUwLDUxLDY5OTUwMzAwMjc2NTksMSwzNiAwIDM1NTUgMSwwOzMwLDMwLDE5Njg2NTA3NjkzNjA0LDEsLDA7MTUsMTUsMjE5ODQxODMyNjA2NDIsMSwsMDsxMCwxMCwyMzI3OTQ1NzQyMDkyOCwxLCwwOzUsNSw1OTkyOTYzODI0OTY5OSwyLCwwOzAsMCwwLDQsLDA7MCwwLDAsMTAsLDA7MCwwLDAsNCwsMDswLDAsMCwxMCwsMDt8MTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMDAxMDEwMDAxMDEwMDAxMTExMTExMTExMTExMTExMTExMTExMTEwMDExMTExMTExMDAwMDAwMDAxMTExMTAxMTExMTExMTExMTExMTAwMDAxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMTExMTExMTEwMDExMTEwMDAwMDAwMDExMDAxMTExMTAwMDEwMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDEwMTAxMDEwMTAwMDExMTExMTExMDAwMDAwMDAwMDExMDAwMDAwMDAwMDAwMDAwMDAwMTAwMDAwMDAwMDAwMDAwMDExMDAxMTAwMTEwMDExMTExMTExMTEwMDAwMDAwMDExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMTExMTAxMDEwMDAxMDAwMDAxMDAwMTEwMDAwMDAwMDAwMDAwMDAwMDAxMTExMTExMTAwMDAwMDEwMTEwMDAwMDAxMTAwMDAwMDAwMDAwMDAwMTExMTAwMTExMTAwMTEwMDAwMDAxMTExMTExMTAwMDAxMTExMTExMTAwMDAxMTExMTExMDAwMDAxMTExMTExMTExMTEwMDAwMDAwMDAwMDAwMDAwMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDEwMTAxMDExMTExMTExMTExMTExMDAxMDAwMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDExMTExMTExMTExMTExMTExMDExMTExMTExMDAwMDExMDAwMDEwMDAwMDAwMDAxMDAwMDAxMDAwMTAwMDEwMDAwMDAwMDAwMDAwMDAwMDAwMTExMTExMTExMTAwMDAwMDAwMDAwMDAwMDAwMDAwMTExMTExMTExMTExMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMDAwMDAwMDAwMDAwMDExMTExMTEwMDAwMDAwMDAwMDAwMDAwMDAwMTAwMDAwMDAwMDAwMDAwMDEwMTAxMDEwMTAxMDEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDEwMTExMTAwMDAwMDAwMDAxMTExMTExMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMTEwMDExMTExMTExMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMTExMTEwMTEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxMTExMTExMXwxMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMDExMTExMTExMTExMTExMTExMTExMTExMTEwMDAwMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTEwMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTEwMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMDExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMDAwMDAwMDAwMDAwMDExMTEwMTExMTExMTExMTEwMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMDExMTExMTExMTExMTExMTExMTExMTExMTExMTExMDExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExfA%3D%3D%21END%21%3D%3D%21END%21"
 	//$scope.save_string = ""
-	$scope.lookahead = 400
+	$scope.lookahead = 500
 	
 	$scope.load_more = function() {
 		$scope.lookahead += 10
@@ -36,34 +38,39 @@ app.controller('myCtrl', function($scope) {
 		$scope.spellsCastTotal = parseInt(spl[7].split(' ')[2])
 		console.log($scope.spellsCastTotal)
 
-		$scope.lookahead = 400
 		$scope.update_cookies()
 	}
 	
 	$scope.update_cookies = function() {
 		$scope.cookies = []
     bsIndices = [];
+    skipIndices = [];
 		for(i = 0; i < $scope.lookahead; i++) {
 			$scope.cookies.push([])
       cookie1 = check_cookies($scope.spellsCastTotal+i, '', false)
       cookie2 = check_cookies($scope.spellsCastTotal+i, '', true)
       cookie3 = check_cookies($scope.spellsCastTotal+i, 'easter', true)
-      cookie4 = check_gambler($scope.spellsCastTotal+i)
+      gambler = check_gambler($scope.spellsCastTotal+i)
 			$scope.cookies[i].push(cookie1)
 			$scope.cookies[i].push(cookie2)
 			$scope.cookies[i].push(cookie3)
-      $scope.cookies[i].push(cookie4)
+      $scope.cookies[i].push(gambler)
       
-      if (cookie1.type == 'Building Special' || cookie2.type == 'Building Special' || cookie3.type == 'Building Special' || cookie4.hasBs ) {
+      if (cookiesContainBuffs($scope.include_ef_in_sequence, cookie1, cookie2, cookie3) || gambler.hasBs || ($scope.include_ef_in_sequence && gambler.hasEf) ) {
         bsIndices.push(i);
       }
       
+      if (($scope.skip_abominations && gambler.type == 'Resurrect Abomination') || ($scope.skip_edifices && gambler.type == 'Spontaneous Edifice' && !gambler.backfire)) {
+        skipIndices.push(i);
+      }
+      
 		}
-		console.log($scope.cookies)
-    console.log(bsIndices)
+		console.log($scope.cookies);
+    console.log(bsIndices);
+    console.log(skipIndices);
     
-    if (bsIndices.length < 16) {
-      console.log('<16 BS in first 200');
+    if (bsIndices.length < $scope.buffs_in_sequence) {
+      console.log('could not find requested number of buffs together');
       $scope.bestDistance = -1;
       $scope.bestStart = -1;
       return;
@@ -72,15 +79,26 @@ app.controller('myCtrl', function($scope) {
     bestStart = 0;
     bestDistance = $scope.lookahead + 50;
     
-    for (i = 0; i + 15 < bsIndices.length; i++) {
-      seqMin = bsIndices[i];
-      seqMax = bsIndices[i+15];
-      distance = seqMax - seqMin;
+    for (i = 0; i + $scope.buffs_in_sequence <= bsIndices.length; i++) {
+      seqStart = bsIndices[i];
+      seqEnd = bsIndices[i+$scope.buffs_in_sequence-1];
+      baseDistance = seqEnd - seqStart + 1;
+      
+      skips = skipIndices.filter((idx) => idx > seqStart && idx < seqEnd && !bsIndices.includes(idx));
+      
+      distance = baseDistance - skips.length;
       
       if (distance < bestDistance) {
-        bestStart = seqMin;
+        bestStart = seqStart;
         bestDistance = distance;
       }
+    }
+    
+    if (bestDistance > $scope.buffs_in_sequence + $scope.max_spread) {
+      console.log('could not find requested number of buffs in less than max requested length');
+      $scope.bestDistance = -1;
+      $scope.bestStart = -1;
+      return;
     }
     
     console.log('Best distance: ' + bestDistance);
@@ -88,6 +106,10 @@ app.controller('myCtrl', function($scope) {
     $scope.bestStart = bestStart;
     $scope.bestDistance = bestDistance;
 	}
+  
+  function cookiesContainBuffs(include_ef, ...cookies) {
+    return cookies.some((cookie) => {return cookie.type == 'Building Special' || (include_ef && cookie.type == 'Elder Frenzy');});
+  }
   
   function choose(arr) {return arr[Math.floor(Math.random()*arr.length)];}
   
@@ -114,7 +136,7 @@ app.controller('myCtrl', function($scope) {
     
     Math.seedrandom($scope.seed + '/' + (spellsCast + 1));
     if(Math.random() < (1 - gfdBackfire)){
-      gamblerSpell.wrath = false;
+      gamblerSpell.backfire = false;
       
       if (gfdSpell.name == "Force the Hand of Fate") {
         gamblerSpell.innerCookie1 = check_cookies(spellsCast + 1, '', false, true);
@@ -127,7 +149,7 @@ app.controller('myCtrl', function($scope) {
       //TODO: Do something with edifice to make it clear if it will fail or not. like this:
       //if(gfdSpell.name == "Spontaneous Edifice") spellOutcome += ' (' + FortuneCookie.gamblerEdificeChecker(spellsCast + 1, true) + ')';
     } else {
-      gamblerSpell.wrath = true;
+      gamblerSpell.backfire = true;
       
       if (gfdSpell.name == "Force the Hand of Fate") {
         gamblerSpell.innerCookie1 = check_cookies(spellsCast + 1, '', false, false);
