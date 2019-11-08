@@ -38,10 +38,10 @@ app.controller('myCtrl', function($scope) {
 		spl=str[5].split(';');
 		console.log(spl[7]);
 		
-    $scope.spellsCastTotal = parseInt(spl[7].split(' ')[2]);
+    $scope.spellsCastTotal = parseInt(spl[7].split(' ')[2]) || 0;
     console.log('Total spells cast: ' + $scope.spellsCastTotal);
     
-    $scope.spellsCastThisAscension = parseInt(spl[7].split(' ')[1]);
+    $scope.spellsCastThisAscension = parseInt(spl[7].split(' ')[1]) || 0;
     console.log('Spells cast this ascension: ' + $scope.spellsCastThisAscension);
 
 		$scope.update_cookies();
